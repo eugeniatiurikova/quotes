@@ -1,10 +1,14 @@
 <?php
 //session_start();
 //unset($_SESSION['user']);
-$controller = $_GET['controller'] ?? 'index';
+try {
+    $controller = $_GET['controller'] ?? 'index';
+    $routes = require 'routes.php';
+    require_once $routes[$controller];
+} catch (Throwable $e) {
+    die('Something went totally wrond: '.$e->getMessage());
+}
 
-$routes = require 'routes.php';
-require_once $routes[$controller];
 
 //include_once 'Quote.php';
 //include_once 'QuoteService.php';

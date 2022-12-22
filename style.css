@@ -1,0 +1,170 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px 25%;
+}
+
+a, .aspan {
+  color: #48A7F3;
+  padding-bottom: 2px;
+  text-decoration: none;
+  cursor: pointer;
+}
+a:hover, .aspan:hover {
+  border-bottom: solid 2px #B3DBFB;
+}
+
+.formq {
+  padding-top: 15px;
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  transition: margin-top 0.3s, opacity 0.3s, transform 0.3s;
+  -webkit-transition:  margin-top 0.3s, opacity 0.3s, -webkit-transform 0.3s;
+}
+
+.hiddenform {
+  transform: scaleY(0);
+  -webkit-transform: scaleY(0);
+  margin-top: -70px;
+  margin-bottom: -20px;
+  opacity: 0;
+]}
+
+.form {
+  flex-direction: column;
+  width: 60%;
+}
+
+.formleft {
+  width: 60%;
+  height: 70px;
+}
+
+.formright {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input, textarea {
+  width: 100%;
+  font-family: Arial, sans-serif;
+  padding: 7px;
+  font-size: 12px;
+  /*background: #f0f1f5;*/
+  resize: none;
+  border: solid 1px #E7E8E9;
+  border-radius: 5px;
+  /*border: none;*/
+}
+
+.inputheight {
+  height: 30px;
+}
+
+.submitbutton {
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  background: #48A7F3;
+  color: white;
+  text-transform: uppercase;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.redtext {
+  color: #c53a3a;
+}
+
+.errortext {
+  padding: 10px;
+  background: #c53a3a;
+  text-align: center;
+  color: #e3e3e3;
+  border-radius: 5px;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.mainnav {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 0 20px 0;
+}
+
+h2 {
+  padding: 40px 0 0 0;
+}
+
+.mute, .top, .del {
+  padding: 0 2px 5px 2px;
+  width: fit-content;
+  border: none;
+  background: transparent;
+  vertical-align: center;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.quotewrap {
+  display: flex;
+  padding-top: 45px;
+}
+
+.quotesign {
+  font-family: Arial, sans-serif;
+  font-size: 135px;
+  line-height: 1px;
+  padding: 36px 5px 0 0;
+  /*margin-top: -31px;*/
+  color: #E7E8E9;
+}
+
+.quotebody {
+padding: 0;
+}
+
+.quotetext {
+  font-size: 16px;
+  line-height: 21px;
+}
+
+.author {
+  padding: 6px 0 5px 0;
+  color: #5b9b5b;
+}
+
+.addedby {
+  font-size: 10px;
+  padding: 4px 0;
+  color: #aaadb2;
+  text-transform: uppercase;
+}
+
+.divider {
+  color: #cdd0d5;
+  text-transform: uppercase;
+}
+
+.hidden {
+  position:absolute;
+  width:1px;
+  height:1px;
+  padding:0;
+  margin:-1000px;
+}
+
+.archive, .archivettl {
+  opacity: 40%;
+}
