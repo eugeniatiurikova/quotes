@@ -19,21 +19,6 @@ $quoteService = new QuoteService($pdo);
 if (isset($_GET['action'])) {
     switch ($_GET['action']) {
         case 'add':
-//            if (isset($_GET['text'])) { // Обработка данных при отправлении через GET
-//                ['text' => $quoteText, 'author' => $quoteAuthor] = $_GET;
-//                if ($quoteText != '') {
-//                    $quote = new Quote($user->getUsername(), $quoteAuthor, $quoteText);
-//                    $quote->setId(rand(1, 1000))->setUserName($user->getName());
-//                    $quoteService->addQuote($quote);
-//                }
-//            }
-//            $response = [
-//                'status' => 'ok',
-//                'key' => $quote->getId(),
-//                'user_name' => $quote->getUserName(),
-//                'author' => $quote->getAuthor(),
-//                'description' => $quote->getDescription(),
-//            ];
             $data = json_decode(file_get_contents('php://input'));
             if ($data->author && $data->description) {
                 $quoteText = $data->description;

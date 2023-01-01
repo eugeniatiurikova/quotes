@@ -108,13 +108,25 @@ h2 {
 }
 
 .mute, .top, .del {
-  padding: 0 2px 5px 2px;
-  width: fit-content;
+  width: 17px;
+  height: 17px;
+  /*width: fit-content;*/
   border: none;
   background: transparent;
+  text-align: center;
   vertical-align: center;
   font-size: 13px;
   cursor: pointer;
+  margin-top: 3px;
+  margin-right: 3px;
+}
+
+.svgicon {
+  width: 15px;
+  height: 15px;
+}
+.svgicon:hover {
+  fill: #48A7F3;
 }
 
 .quotewrap {
