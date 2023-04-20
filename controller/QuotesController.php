@@ -92,8 +92,6 @@ if (isset($_GET['action'])) {
             }
             break;
     }
-//    header("Location: /?controller=quotes");
-//    die();
 }
 $quoteService->getQuotes();
 $quotesActual = $quoteService->getActual();

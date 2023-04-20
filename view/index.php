@@ -8,5 +8,12 @@
 </head>
 <body>
 <?php include "menu.php" ?>
+<p class="quotetext">You have to login or register to add or manage quotes.<br>We only need your name so we know who to credit as the person who shared the quote. Well, you also need a password.</p>
+<h2>Quotes of the day:</h2>
+<div class="actuals">
+    <?php foreach ($quotesRandom as $quote) :
+        include 'quote-a.php';
+    endforeach;?>
+</div>
 </body>
 </html>

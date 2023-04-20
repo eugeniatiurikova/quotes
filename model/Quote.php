@@ -4,19 +4,14 @@ require_once 'User.php';
 class Quote
 {
     private bool $archived = false;
-//    private ?DateTimeInterface $dateCreated = null;
-//    private ?DateTimeInterface $dateUpdated = null;
-//    private ?DateTimeInterface $dateDone = null;
     private int $id;
     private ?string $user_name = null;
-//    private array $comments = [];
 
     public function __construct(
         private ?string $user = null,
         private ?string $author = null,
         private ?string $description = null
     ) {
-//    $this->dateCreated = $dateCreated ?? new DateTime();
     }
 
 
@@ -62,7 +57,6 @@ class Quote
     public function setDescription(string $description): self
     {
         $this->description = $description;
-//        $this->dateUpdated = new DateTime();
         return $this;
     }
 
@@ -80,16 +74,12 @@ class Quote
     public function markActive(): self
     {
         $this->archived = false;
-//        $this->dateUpdated = new DateTime();
-//        $this->datedone = null;
         return $this;
     }
 
     public function markArchived(): self
     {
         $this->archived = true;
-//        $this->dateUpdated = new DateTime();
-//        $this->dateDone = new DateTime();
         return $this;
     }
 
@@ -98,31 +88,4 @@ class Quote
         return $this->user;
     }
 
-
-
-//    public function getComments(): array
-//    {
-//        return $this->comments;
-//    }
-//
-//    public function setComments(array $comments): self
-//    {
-//        $this->comments = $comments;
-//        return $this;
-//    }
-//
-//    public function getDateCreated(): DateTimeInterface
-//    {
-//        return $this->dateCreated;
-//    }
-//
-//    public function getDateUpdated(): DateTimeInterface
-//    {
-//        return $this->dateUpdated;
-//    }
-//
-//    public function getDateDone(): DateTimeInterface
-//    {
-//        return $this->dateDone;
-//    }
 }

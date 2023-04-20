@@ -24,7 +24,7 @@
 endforeach;?>
 </div>
 
-<h2 class="archivettl">Not actual quotes:</h2>
+<h2 class="archivettl">Unactual quotes:</h2>
 <div class="archive">
     <?php foreach ($quotesUnimportant as $quote) :
     include 'quote-n.php';
@@ -52,20 +52,20 @@ endforeach;?>
     //[↑][↓][×]
 
     function handleMoveToActuals(key, atr, usr, desc) {
-        let newHtml = '<div id="' + key + '" class="quotewrap"><p class="quotesign">“</p><div class="quotebody"><p class="quotetext">' + desc;
-        newHtml += '</p><p class="author">' + atr + '</p>'
-        newHtml += '<p class="addedby">added by ' + usr + '</p>'
-        newHtml += '<button id="mute' + key + '" class="mute" data-id="' + key + '" onclick="muteQuoteByJs(' + key + ')">' + svgdn + '</button>';
+        let newHtml = `<div id="${key}" class="quotewrap"><p class="quotesign">“</p><div class="quotebody"><p class="quotetext">${desc}`;
+        newHtml += `</p><p class="author">${atr}</p>`
+        newHtml += `<p class="addedby">added by ${usr}</p>`
+        newHtml += `<button id="mute${key}" class="mute" data-id="${key}" onclick="muteQuoteByJs(${key})">${svgdn}</button>`;
         newHtml += '</div></div>';
         return newHtml
     }
 
     function handleMoveToUnactuals(key, atr, usr, desc) {
-        let newHtml = '<div id="' + key + '" class="quotewrap"><p class="quotesign">“</p><div class="quotebody"><p class="quotetext">' + desc;
-        newHtml += '</p><p class="author">' + atr + '</p>';
-        newHtml += '<p class="addedby">added by ' + usr + '</p>';
-        newHtml += '<button id="top' + key + '" class="top" data-id="' + key + '" onclick="topQuoteByJs(' + key + ')">' + svgup + '</button>';
-        newHtml += '<button id="del' + key + '" class="del" data-id="' + key + '" onclick="deleteQuoteByJs(' + key + ')">' + svgcls + '</button>';
+        let newHtml = `<div id="${key}" class="quotewrap"><p class="quotesign">“</p><div class="quotebody"><p class="quotetext">${desc}`;
+        newHtml += `</p><p class="author">${atr}</p>`;
+        newHtml += `<p class="addedby">added by ${usr}</p>`;
+        newHtml += `<button id="top${key}" class="top" data-id="${key}" onclick="topQuoteByJs(${key})">${svgup}</button>`;
+        newHtml += `<button id="del${key}" class="del" data-id="${key}" onclick="deleteQuoteByJs(${key})">${svgcls}</button>`;
         newHtml += '</div></div>';
         return newHtml
     }

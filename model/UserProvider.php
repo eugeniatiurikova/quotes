@@ -5,9 +5,7 @@ require_once 'exceptions/UserExistsException.php';
 
 class UserProvider
 {
-//    private array $accounts = [
-//      "admin" => '123'
-//    ];
+
     private PDO $pdo;
     public function __construct(PDO $pdo)
     {

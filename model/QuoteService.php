@@ -9,33 +9,15 @@ class QuoteService
     public function __construct(PDO $pdo)
     {
         $this->pdo = $pdo;
-//        $this->quotes = $_SESSION['quote'] ?? [];
     }
-
-//    public static function addComment(User $author, Quote $quote, string $text): void
-//    {
-//        $arr = $quote->getComments();
-//        $newComment = new Comment(
-//            $author,
-//            $quote,
-//            $text
-//        );
-//        $arr[] = $newComment;
-//        $quote->setComments($arr);
-//    }
 
     public function getQuotes(): array
     {
         $statement = $this->pdo->prepare(
-            'SELECT * FROM quotes LIMIT 30'
+            'SELECT * FROM quotes WHERE deleted IS NULL'
         );
         $statement->execute([]);
         $result = $statement->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Quote::class);
-//        foreach ($result as $quote) {
-//            $qstatement = $this->pdo->prepare('SELECT * FROM users WHERE username = :username');
-//            $qstatement->execute([':username' => $quote->getAuthor(),]);
-//            $tmpuser = $qstatement->fetchObject(User::class, [$quote->getAuthor()]) ?: null;
-//        }
         $this->quotes = $result;
         $_SESSION['quote'] = $result;
         return $result;
@@ -55,6 +37,16 @@ class QuoteService
         return $quote;
     }
 
+    public function getRandom(int $count): array
+    {
+        $arr = [];
+        $keys = array_rand($this->quotes, $count);
+        foreach ($keys as $key) {
+            $arr[] = $this->quotes[$key];
+        }
+        return $arr;
+    }
+
     public function getActual(): array
     {
         $arr = [];
@@ -62,9 +54,6 @@ class QuoteService
             if (!$quote->archived()) $arr[] = $quote;
         }
         return $arr;
-//        return array_map(function (Quote $quote) {
-//           return !$quote->isDone() ?: $quote;
-//        }, $this->quotes);
     }
 
     public function getUnimportant(): array
@@ -103,14 +92,15 @@ class QuoteService
     public function deleteQuote(int $id, string $user): bool
     {
         $statement = $this->pdo->prepare(
-            'DELETE FROM quotes WHERE id = :id AND user = :user'
+//            'DELETE FROM quotes WHERE id = :id AND user = :user'
+            'UPDATE quotes SET deleted = 1 WHERE id = :id AND user = :user'
         );
         $result = $statement->execute([
             ':id' => $id,
             ':user' => $user
         ]);
         if ($statement->rowCount() == 0) {
-            throw new NotThisUsersQuoteException('Not ' . $user. ' added this quote');
+            throw new NotThisUsersQuoteException('This quote was not added by ' . $user);
         }
         return $result;
     }
